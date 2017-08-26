@@ -19,7 +19,7 @@ class Curtain extends Component {
 						let item = this.props.items[key];
 						return (
 							<div className="curtain-item">
-								<img src={item.image} />
+								<img src={item.image} alt="" />
 								<h2>{item.title}</h2>
 							</div>
 						);
