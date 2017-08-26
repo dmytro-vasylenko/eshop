@@ -2,14 +2,28 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 
 import Item from "./Item";
+import {loadItems, addItem, setShopIsLoad} from "../actions/";
+import Header from "./Header";
 
 class Shop extends Component {
+	componentWillMount() {
+		if(!this.props.isLoad) {
+			this.props.onLoadItems(loadItems());
+			this.props.setShopIsLoad();
+		}
+	}
+
 	render() {
 		return (
-			<div className="shop">
-				{this.props.items.map((item, index) => {
-					<Item data={item.data} />
-				})}
+			<div>
+				<Header />
+				<div className="container">
+					<div className="shop">
+						{Object.keys(this.props.items).map((item, index) => {
+							return <Item data={this.props.items[item]} key={index} />;
+						})}
+					</div>
+				</div>
 			</div>
 		);
 	}
@@ -17,8 +31,18 @@ class Shop extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		items: state.items
+		items: state.reducer.items,
+		isLoad: state.reducer.isShopLoad
 	};
 };
 
-export default connect(mapStateToProps)(Shop);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onLoadItems: items => {
+			items.forEach(item => dispatch(addItem(item)));
+		},
+		setShopIsLoad: () => dispatch(setShopIsLoad())
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);

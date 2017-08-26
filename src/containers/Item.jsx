@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { browserHistory } from 'react-router'
 
 class Item extends Component {
 	constructor(props) {
@@ -8,15 +9,15 @@ class Item extends Component {
 	}
 
 	handleClick() {
-		alert("open item...");
+		browserHistory.push("/item/" + this.props.data.id);
 	}
 
 	render() {
-		const {id, img, title, price} = this.props;
+		const {img, title, price} = this.props.data;
 
 		return (
 			<div className="item" onClick={this.handleClick}>
-				<img src={img} />
+				<img src={img} alt="" />
 				<div className="title">
 					<h3>{title}</h3>
 					<span>{price}</span>
