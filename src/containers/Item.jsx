@@ -13,11 +13,11 @@ class Item extends Component {
 	}
 
 	render() {
-		const {img, title, price} = this.props.data;
+		const {image, title, price} = this.props.data;
 
 		return (
 			<div className="item" onClick={this.handleClick}>
-				<img src={img} alt="" />
+				<img src={image} alt="" />
 				<div className="title">
 					<h3>{title}</h3>
 					<span>{price}</span>

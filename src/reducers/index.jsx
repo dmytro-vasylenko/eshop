@@ -31,6 +31,10 @@ const reducer = (state = initialState, action) => {
 			return Object.assign({}, state, {
 				isCurtainOpen: !currentCurtainState
 			});
+		case types.CLEAR_CART:
+			return Object.assign({}, state, {
+				cart: []
+			});
 		default:
 			return state;
 	}

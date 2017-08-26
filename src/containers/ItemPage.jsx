@@ -61,7 +61,7 @@ class ItemPage extends Component {
 			<div>
 				<Header />
 				<div className="container item-page">
-					<img src={item.img} className="item-main-image" alt="" />
+					<img src={item.image} className="item-main-image" alt="" />
 					<div className="info">
 						<span>{item.price}$</span>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt excepturi, corporis debitis earum, cumque unde esse fugiat rerum porro similique tenetur distinctio neque quis doloribus cupiditate corrupti? Vero quia eveniet iure earum esse pariatur doloribus, fugiat? Dolor quam voluptate earum ex vero. Sit accusantium facere saepe distinctio, quisquam at veniam porro eveniet natus, nulla dolore cumque maiores placeat, omnis. Veritatis odio debitis, distinctio vel animi. Veritatis asperiores ut eveniet enim accusamus natus fugiat quisquam veniam adipisci iure labore, illo fugit, dolorum vitae perferendis iusto libero alias perspiciatis. Ab repudiandae laboriosam ea minus quod, assumenda incidunt totam possimus, eaque quasi, ad!</p>
