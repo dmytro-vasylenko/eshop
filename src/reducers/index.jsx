@@ -5,7 +5,8 @@ const initialState = {
 	isShopLoad: false,
 	cart: [],
 	isCurtainOpen: false,
-	isCheckoutOpen: false
+	isCheckoutOpen: false,
+	lang: "en"
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,7 +18,8 @@ const reducer = (state = initialState, action) => {
 				}),
 				isShopLoad: state.isShopLoad,
 				cart: state.cart,
-				isCurtainOpen: state.isCurtainOpen
+				isCurtainOpen: state.isCurtainOpen,
+				lang: state.lang
 			};
 		case types.SET_SHOP_IS_LOAD:
 			return Object.assign({}, state, {

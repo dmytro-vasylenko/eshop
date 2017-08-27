@@ -58,10 +58,15 @@ class ItemPage extends Component {
 			return <div></div>;
 		}
 
+		let containerClass = "container item-page ";
+		if(this.props.isCompact) {
+			containerClass += "container-compact"
+		}
+
 		return (
 			<div>
 				<Header />
-				<div className="container item-page">
+				<div className={containerClass}>
 					<img src={item.image} className="item-main-image" alt="" />
 					<div className="info">
 						<span>{item.price}$</span>
@@ -88,7 +93,9 @@ class ItemPage extends Component {
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		item: state.reducer.items[ownProps.params.id]
+		item: state.reducer.items[ownProps.params.id],
+		isCompact: state.reducer.isCurtainOpen,
+		isShopLoad: state.reducer.isShopLoad
 	};
 };
 
