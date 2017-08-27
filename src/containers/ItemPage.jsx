@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {addItem, loadItem, addToCart, toggleCurtain} from "../actions/";
 import Header from "./Header";
 import Curtain from "./Curtain";
+import Checkout from "./Checkout";
 
 class ItemPage extends Component {
 	constructor(props) {
@@ -79,6 +80,7 @@ class ItemPage extends Component {
 					</div>
 				</div>
 				<Curtain />
+				<Checkout />
 			</div>
 		);
 	}

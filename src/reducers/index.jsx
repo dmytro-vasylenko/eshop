@@ -4,7 +4,8 @@ const initialState = {
 	items: {},
 	isShopLoad: false,
 	cart: [],
-	isCurtainOpen: false
+	isCurtainOpen: false,
+	isCheckoutOpen: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,8 +29,15 @@ const reducer = (state = initialState, action) => {
 			});
 		case types.TOGGLE_CURTAIN:
 			var currentCurtainState = state.isCurtainOpen;
+			var checkoutState = currentCurtainState ? false : state.isCheckoutOpen;
 			return Object.assign({}, state, {
-				isCurtainOpen: !currentCurtainState
+				isCurtainOpen: !currentCurtainState,
+				isCheckoutOpen: checkoutState
+			});
+		case types.TOGGLE_CHECKOUT:
+			var currentCheckoutState = state.isCheckoutOpen;
+			return Object.assign({}, state, {
+				isCheckoutOpen: !currentCheckoutState
 			});
 		case types.CLEAR_CART:
 			return Object.assign({}, state, {

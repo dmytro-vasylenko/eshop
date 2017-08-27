@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-import {toggleCurtain, clearCart} from "../actions/";
+import {toggleCurtain, toggleCheckout, clearCart} from "../actions/";
 
 class Curtain extends Component {
 	componentWillUnmount() {
@@ -11,8 +11,9 @@ class Curtain extends Component {
 	}
 
 	render() {
+		let curtainClass = (this.props.isCheckoutOpen && "shift-curtain") || (this.props.isOpen && "open-curtain");
 		return (
-			<div id="curtain" className={this.props.isOpen && "open-curtain"}>
+			<div id="curtain" className={curtainClass}>
 				<button onClick={this.props.toggleCurtain}>Back to shopping</button>
 				<div className="items">
 					{Object.keys(this.props.items).map(key => {
@@ -27,7 +28,7 @@ class Curtain extends Component {
 				</div>
 				<div className="bottom-buttons">
 					<button onClick={this.props.clearCart}>Clear</button>
-					<button>Proceed to checkout</button>
+					<button onClick={this.props.toggleCheckout}>Proceed to checkout</button>
 				</div>
 			</div>
 		);
@@ -37,13 +38,15 @@ class Curtain extends Component {
 const mapStateToProps = state => {
 	return {
 		items: state.reducer.cart,
-		isOpen: state.reducer.isCurtainOpen
+		isOpen: state.reducer.isCurtainOpen,
+		isCheckoutOpen: state.reducer.isCheckoutOpen
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
 		toggleCurtain: () => dispatch(toggleCurtain()),
+		toggleCheckout: () => dispatch(toggleCheckout()),
 		clearCart: () => dispatch(clearCart())
 	};
 };

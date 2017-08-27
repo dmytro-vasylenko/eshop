@@ -28,6 +28,12 @@ export function toggleCurtain() {
 	};
 };
 
+export function toggleCheckout() {
+	return {
+		type: types.TOGGLE_CHECKOUT
+	};
+};
+
 export function clearCart() {
 	return {
 		type: types.CLEAR_CART
