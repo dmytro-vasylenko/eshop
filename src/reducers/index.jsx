@@ -28,7 +28,7 @@ const reducer = (state = initialState, action) => {
 		case types.ADD_TO_CART:
 			let inCart = false;
 			state.cart.forEach(item => {
-				if(item.id == action.payload.id) {
+				if(item.id === action.payload.id) {
 					inCart = true;
 				}
 			});
