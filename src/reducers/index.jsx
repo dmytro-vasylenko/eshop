@@ -26,6 +26,15 @@ const reducer = (state = initialState, action) => {
 				isShopLoad: true
 			});
 		case types.ADD_TO_CART:
+			let inCart = false;
+			state.cart.forEach(item => {
+				if(item.id == action.payload.id) {
+					inCart = true;
+				}
+			});
+			if(inCart) {
+				return state;
+			}
 			return Object.assign({}, state, {
 				cart: [...state.cart, action.payload]
 			});
