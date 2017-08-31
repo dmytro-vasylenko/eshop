@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 
 import {toggleCurtain, toggleCheckout, clearCart} from "../actions/";
+import ItemInCart from "./ItemInCart";
 
 class Curtain extends Component {
 	componentWillUnmount() {
@@ -16,14 +17,8 @@ class Curtain extends Component {
 			<div id="curtain" className={curtainClass}>
 				<button onClick={this.props.toggleCurtain}>Back to shopping</button>
 				<div className="items">
-					{Object.keys(this.props.items).map(key => {
-						let item = this.props.items[key];
-						return (
-							<div className="curtain-item">
-								<img src={item.image} alt="" />
-								<h2>{item.title}</h2>
-							</div>
-						);
+					{Object.keys(this.props.items).map((index, key) => {
+						return <ItemInCart item={this.props.items[key]} key={key} />
 					})}
 				</div>
 				<div className="bottom-buttons">
