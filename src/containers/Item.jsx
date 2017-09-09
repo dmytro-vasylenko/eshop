@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { browserHistory } from 'react-router'
+import { hashHistory } from "react-router";
 
 class Item extends Component {
 	constructor(props) {
@@ -9,7 +9,7 @@ class Item extends Component {
 	}
 
 	handleClick() {
-		browserHistory.push("/item/" + this.props.data.id);
+		hashHistory.push("/item/" + this.props.data.id);
 	}
 
 	render() {
