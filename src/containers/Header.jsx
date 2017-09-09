@@ -10,8 +10,10 @@ class Header extends Component {
 		}
 
 		let menu = [
-			{link: "/", title: "Home page"}
+			{link: "/", title: "Home page"},
+			{link: "/admin", title: "Admin panel"}
 		];
+
 
 		return (
 			<div id="header">
