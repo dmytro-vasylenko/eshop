@@ -1,11 +1,12 @@
 import React, {Component} from "react";
+import {connect} from "react-redux";
 
 const CARD_NUMBER_LENGTH = 4;
 
 class Card extends Component {
 	constructor(props) {
 		super(props);
-		
+
 		this.setNumber = this.setNumber.bind(this);
 		this.setExpires = this.setExpires.bind(this);
 
@@ -18,8 +19,7 @@ class Card extends Component {
 	setNumber(event, index) {
 		let number = this.state.number;
 		let value = event.target.value;
-		// eslint-disable-next-line
-		if(value != Number(value)) {
+		if(!this.isNumber(value)) {
 			return;
 		}
 		number[index] = value;
@@ -40,8 +40,7 @@ class Card extends Component {
 	setExpires(event, index) {
 		let expires = this.state.expires;
 		let value = event.target.value;
-		// eslint-disable-next-line
-		if(value != Number(value)) {
+		if(!this.isNumber(value)) {
 			return;
 		}
 
@@ -56,24 +55,41 @@ class Card extends Component {
 		this.setState({expires});
 	}
 
+	isNumber(value) {
+		// eslint-disable-next-line
+		return value == Number(value);
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if(!prevProps.isOpen && this.props.isOpen) {
+			document.querySelectorAll(".card-number input")[0].focus();
+		}
+	}
+
 	render() {
 		return (
 			<div className="card">
 				<div className="chip" />
 				<div className="card-number">
-					<input type="number" value={this.state.number[0]} onChange={e => this.setNumber(e, 0)} placeholder="****" />
-					<input type="number" value={this.state.number[1]} onChange={e => this.setNumber(e, 1)} placeholder="****" />
-					<input type="number" value={this.state.number[2]} onChange={e => this.setNumber(e, 2)} placeholder="****" />
-					<input type="number" value={this.state.number[3]} onChange={e => this.setNumber(e, 3)} placeholder="****" />
+					<input type="text" value={this.state.number[0]} onChange={e => this.setNumber(e, 0)} placeholder="****" />
+					<input type="text" value={this.state.number[1]} onChange={e => this.setNumber(e, 1)} placeholder="****" />
+					<input type="text" value={this.state.number[2]} onChange={e => this.setNumber(e, 2)} placeholder="****" />
+					<input type="text" value={this.state.number[3]} onChange={e => this.setNumber(e, 3)} placeholder="****" />
 				</div>
 				<div className="card-expires">
-					<input type="number" value={this.state.expires[0]} onChange={e => this.setExpires(e, 0)} placeholder="MM" />
+					<input type="text" value={this.state.expires[0]} onChange={e => this.setExpires(e, 0)} placeholder="MM" />
 					<div className="separator">/</div>
-					<input type="number" value={this.state.expires[1]} onChange={e => this.setExpires(e, 1)} placeholder="YY" />
+					<input type="text" value={this.state.expires[1]} onChange={e => this.setExpires(e, 1)} placeholder="YY" />
 				</div>
 			</div>
 		);
 	}
 }
 
-export default Card;
+const mapStateToProps = state => {
+	return {
+		isOpen: state.reducer.isCheckoutOpen
+	};
+};
+
+export default connect(mapStateToProps)(Card);
