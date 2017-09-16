@@ -29,6 +29,7 @@ class ItemPage extends Component {
 	handleAddToCart() {
 		var {id, image, title, price} = this.props.item;
 		var currentQuantity = this.state.quantity;
+
 		this.props.addToCart({
 			id, image, title, price,
 			quantity: currentQuantity
@@ -78,7 +79,7 @@ class ItemPage extends Component {
 								<button onClick={this.handlePlus} className="control-button">+</button>
 							</div>
 							<div className="action-buttons">
-								<button onClick={this.handleAddToCart}>Add to Cart</button>
+								<button onClick={this.handleAddToCart} className={!this.props.inCart ? "" : "disabled-button"}>{this.props.inCart ? "Already in cart" : "Add to cart"}</button>
 								<button onClick={this.props.toggleCurtain}>Buy right now</button>
 							</div>
 						</div>
@@ -95,7 +96,8 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		item: state.reducer.items[ownProps.params.id],
 		isCompact: state.reducer.isCurtainOpen,
-		isShopLoad: state.reducer.isShopLoad
+		isShopLoad: state.reducer.isShopLoad,
+		inCart: state.reducer.cart.filter(item => item.id == ownProps.params.id).length > 0
 	};
 };
 
