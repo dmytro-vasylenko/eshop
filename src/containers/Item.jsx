@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { hashHistory } from "react-router";
+import {hashHistory} from "react-router";
 
 class Item extends Component {
 	constructor(props) {
