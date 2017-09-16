@@ -91,6 +91,22 @@ button
 		color: #303030
 		background: white
 
+.controls
+	float: left
+
+	span
+		display: inline-block
+		margin: 5px 20px 0 0
+
+	.control-button
+		width: 25px
+		height: 25px
+		padding: 0
+		border-radius: 100%
+		line-height: 20px
+		margin: 10px 20px 0 0
+		float: inline-block
+
 .disabled-button
 	cursor: default
 	background: #f44336
@@ -135,21 +151,6 @@ button
 				color: #303030
 				background: white
 
-		.controls
-			float: left
-
-			span
-				display: inline-block
-				margin: 5px 20px 0 0
-
-			.control-button
-				width: 25px
-				height: 25px
-				padding: 0
-				border-radius: 100%
-				line-height: 20px
-				margin: 10px 20px 0 0
-				float: inline-block
 
 		.action-buttons
 			float: left
@@ -204,24 +205,32 @@ button
 
 	.curtain-item
 		width: 100%
-		margin: 10px 0
+		overflow: hidden
 		display: flex
 		align-items: center
+		margin: 10px 0
 
 		&:first-child
 			margin: 0
 
 		img
 			width: 33%
+			height: 33%
 			display: inline-block
+			float: left
 
-		h2
-			width: 66%
-			display: inline-block
-			float: right
-			padding-left: 10px
+		.item-info
+			float: left
+			padding: 10px
 			box-sizing: border-box
-			font-size: 18px
+
+			h2
+				box-sizing: border-box
+				font-size: 18px
+
+			span
+				font-weight: bold
+				color: grey
 
 	.bottom-buttons
 		position: absolute
