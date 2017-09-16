@@ -7,7 +7,10 @@ class ItemInCart extends Component {
 		return (
 			<div className="curtain-item">
 				<img src={item.image} alt="" />
-				<h2>{item.title}</h2>
+				<div className="item-info">
+					<h2>{item.title}</h2>
+					<span>{item.price}$ x {item.quantity} = {item.quantity * item.price}$</span>
+				</div>
 			</div>
 		);
 	}
